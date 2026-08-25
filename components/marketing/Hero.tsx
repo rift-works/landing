@@ -1,3 +1,4 @@
+import { ChannelMark } from "@/components/brand/ChannelMark";
 import { Button } from "@/components/ui/Button";
 import { localePath, type Locale } from "@/lib/i18n";
 import { getCopy, phases } from "@/lib/site";
@@ -7,93 +8,36 @@ export function Hero({ locale }: { locale: Locale }) {
 
   return (
     <section className="rw-hero">
-      <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
-        <span
-          style={{
-            font: "var(--rw-weight-medium) var(--rw-label-size)/1 var(--rw-font-mono)",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "var(--rw-accent-text)",
-          }}
-        >
+      <div className="rw-hero-copy">
+        <span className="rw-kicker rw-enter" style={{ animationDelay: "0ms" }}>
           {c.heroKicker}
         </span>
-        <h1
-          style={{
-            margin: 0,
-            font: "var(--rw-weight-semibold) clamp(32px, 7vw, 58px)/1.04 var(--rw-font-sans)",
-            letterSpacing: "-0.035em",
-            fontStretch: "112%",
-            fontVariationSettings: '"wdth" 112',
-            color: "var(--rw-text)",
-          }}
-        >
+        <h1 className="rw-hero-title rw-enter" style={{ animationDelay: "40ms" }}>
           {c.heroHead}
         </h1>
-        <p
-          style={{
-            margin: 0,
-            font: "var(--rw-weight-regular) 17px/1.6 var(--rw-font-sans)",
-            color: "var(--rw-text-secondary)",
-            maxWidth: 520,
-          }}
-        >
+        <p className="rw-lead rw-enter" style={{ animationDelay: "80ms" }}>
           {c.heroSub}
         </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+        <div className="rw-hero-actions rw-enter" style={{ animationDelay: "120ms" }}>
           <Button href={localePath(locale, "/contact")}>{c.heroPrimary}</Button>
           <Button variant="secondary" href={localePath(locale, "/services")}>
             {c.heroSecondary}
           </Button>
         </div>
       </div>
-      <div
-        style={{
-          border: "1px solid var(--rw-border)",
-          background: "var(--rw-surface-raised)",
-          padding: 36,
-        }}
-      >
-        <span
-          style={{
-            font: "var(--rw-weight-medium) var(--rw-label-size)/1 var(--rw-font-mono)",
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "var(--rw-text-secondary)",
-          }}
-        >
+      <div className="rw-hero-panel rw-enter" style={{ animationDelay: "80ms" }}>
+        <div className="rw-hero-channel">
+          <ChannelMark size={120} />
+          <span className="rw-kicker">{c.channel}</span>
+        </div>
+        <span className="rw-kicker" style={{ color: "var(--rw-text-secondary)" }}>
           {c.model}
         </span>
-        <div style={{ display: "flex", flexDirection: "column", marginTop: 22 }}>
+        <div className="rw-hero-phases">
           {phases.map((phase, index) => (
-            <div
-              key={phase}
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                gap: 18,
-                padding: "16px 0",
-                borderBottom: index < phases.length - 1 ? "1px solid var(--rw-border-inner)" : "none",
-              }}
-            >
-              <span
-                style={{
-                  font: "var(--rw-weight-medium) 12px/1 var(--rw-font-mono)",
-                  color: "var(--rw-accent-text)",
-                  minWidth: 26,
-                }}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span
-                style={{
-                  font: "var(--rw-weight-semibold) 20px/1 var(--rw-font-sans)",
-                  letterSpacing: "-0.02em",
-                  color: "var(--rw-text)",
-                }}
-              >
-                {phase}
-              </span>
+            <div key={phase} className="rw-hero-phase">
+              <span className="rw-rebuild-code">{String(index + 1).padStart(2, "0")}</span>
+              <span className="rw-hero-phase-name">{phase}</span>
             </div>
           ))}
         </div>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Coverage } from "@/components/marketing/Coverage";
+import { CtaBand } from "@/components/marketing/CtaBand";
 import { PageIntro } from "@/components/marketing/PageIntro";
 import { isLocale } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
@@ -63,13 +65,21 @@ export default async function WeArePage({ params }: { params: Promise<{ locale: 
         </article>
       </section>
       <section className="rw-split" style={{ borderTop: "1px solid var(--rw-border)" }}>
-        {copy.principles.map((item) => (
-          <article key={item.title} style={{ borderLeft: "3px solid var(--rw-oxide)", padding: "8px 0 8px 18px" }}>
+        {copy.principles.map((item, index) => (
+          <article
+            key={item.title}
+            style={{
+              borderLeft: index === 0 ? "3px solid var(--rw-oxide)" : "2px solid var(--rw-invert)",
+              padding: "8px 0 8px 18px",
+            }}
+          >
             <h3 style={{ margin: 0, font: "var(--rw-weight-semibold) 18px/1.3 var(--rw-font-sans)" }}>{item.title}</h3>
             <p style={{ margin: "8px 0 0", color: "var(--rw-text-secondary)" }}>{item.body}</p>
           </article>
         ))}
       </section>
+      <Coverage locale={locale} />
+      <CtaBand locale={locale} />
     </>
   );
 }
