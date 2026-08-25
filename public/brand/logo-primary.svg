@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" width="300" height="64" role="img" aria-label="RiftWorks">
+<title>RiftWorks horizontal lockup</title>
+
+
+<path d="M6 6 H26 V32 H21 V58 H6 Z" fill="#1A1A18"></path><path d="M43 6 H58 V58 H38 V32 H43 Z" fill="#1A1A18"></path>
+<text x="84" y="45" font-family="Archivo, system-ui, sans-serif" font-size="42" font-weight="600" letter-spacing="-1.5" fill="#1A1A18">RiftWorks</text>
+</svg>
