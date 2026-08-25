@@ -1,0 +1,14 @@
+/* RiftWorks surface language. Square, hairline, unshadowed. */
+
+:root {
+  --rw-radius:        0;      /* everything except fields                    */
+  --rw-radius-field:  4px;    /* inputs only                                 */
+  --rw-border-width:  1px;
+  --rw-border-strong: 2px;    /* structural rules, dialog frames, table head */
+  --rw-border-accent: 3px;    /* active tab underline, selected row edge     */
+  --rw-shadow:        none;   /* the system has no shadows                   */
+
+  --rw-clearspace:    1;      /* multiplier of the mark's channel width      */
+  --rw-mark-min-px:   16px;   /* symbol floor on screen                      */
+  --rw-mark-min-mm:   8mm;    /* symbol floor in print                       */
+}

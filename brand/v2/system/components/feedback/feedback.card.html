@@ -1,0 +1,70 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Feedback" subtitle="Alerts, dialog, progress, loading, empty state" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:0;padding:20px;background:var(--rw-surface)}
+ .rw-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+ .rw-grid{display:grid;gap:18px}
+ .rw-cap{font:var(--rw-weight-medium) var(--rw-ui-label-size)/1 var(--rw-font-mono);letter-spacing:var(--rw-ui-label-track);text-transform:uppercase;color:var(--rw-text-secondary)}
+</style>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+// Resolve the design-system namespace at runtime rather than hard-coding it:
+// the compiler assigns the global, and it may not be "RiftWorks".
+function dsScope(required) {
+  const direct = window.RiftWorks;
+  if (direct && required.every(n => direct[n])) return direct;
+  for (const key of Object.keys(window)) {
+    const v = window[key];
+    if (v && typeof v === 'object' && required.every(n => typeof v[n] === 'function')) return v;
+  }
+  document.getElementById('root').innerHTML =
+    '<pre style="font:12px/1.6 var(--rw-font-mono);color:var(--rw-oxide-deep);white-space:pre-wrap">' +
+    'Design-system bundle not loaded, or it does not export: ' + required.join(', ') +
+    '\nThis card renders once _ds_bundle.js is compiled.</pre>';
+  return null;
+}
+
+const __ds = dsScope(['Alert', 'Dialog', 'ProgressBar', 'PhaseProgress', 'Skeleton', 'Spinner', 'EmptyState', 'Button']);
+const { Alert, Dialog, ProgressBar, PhaseProgress, Skeleton, Spinner, EmptyState, Button } = __ds || {};
+if (__ds) {
+function Demo() {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <div className="rw-grid" style={{ gridTemplateColumns:'repeat(3,1fr)', alignItems:'start' }}>
+      <div style={{ display:'flex', flexDirection:'column', gap:12 }}>
+        <Alert title="Cambio guardado">La propuesta RW-014 se actualizó.</Alert>
+        <Alert tone="negative" title="No se pudo enviar">Revise la dirección de correo.</Alert>
+        <Alert tone="positive" title="Factura pagada">RW-F-2026-041 · 14 · 08</Alert>
+        <Alert tone="info" title="En revisión">Pendiente de aprobación del cliente.</Alert>
+      </div>
+      <div style={{ display:'flex', flexDirection:'column', gap:20 }}>
+        <ProgressBar label="Build · sprint 03" value={68} />
+        <PhaseProgress current={2} />
+        <div style={{ borderTop:'1px solid var(--rw-border-inner)', paddingTop:14, display:'flex', flexDirection:'column', gap:12 }}>
+          <Skeleton lines={3} />
+          <Spinner />
+        </div>
+        <Button size="sm" variant="secondary" onClick={() => setOpen(true)}>Abrir diálogo</Button>
+      </div>
+      <EmptyState title="Sin proyectos todavía"
+        action={<Button size="sm">Nuevo proyecto</Button>}>
+        Cree el primero para verlo aquí.
+      </EmptyState>
+      <Dialog open={open} title="¿Enviar la propuesta?" confirmLabel="Enviar"
+        onConfirm={() => setOpen(false)} onCancel={() => setOpen(false)}>
+        Se enviará a Nombre del cliente y quedará registrada.
+      </Dialog>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+}
+</script>
+</body></html>

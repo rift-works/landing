@@ -1,0 +1,75 @@
+<!-- @dsCard group="Components" viewport="700x260" name="Core" subtitle="Logo, Button, Card and Badge" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:0;padding:20px;background:var(--rw-surface)}
+ .rw-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+ .rw-grid{display:grid;gap:18px}
+ .rw-cap{font:var(--rw-weight-medium) var(--rw-ui-label-size)/1 var(--rw-font-mono);letter-spacing:var(--rw-ui-label-track);text-transform:uppercase;color:var(--rw-text-secondary)}
+</style>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+// Resolve the design-system namespace at runtime rather than hard-coding it:
+// the compiler assigns the global, and it may not be "RiftWorks".
+function dsScope(required) {
+  const direct = window.RiftWorks;
+  if (direct && required.every(n => direct[n])) return direct;
+  for (const key of Object.keys(window)) {
+    const v = window[key];
+    if (v && typeof v === 'object' && required.every(n => typeof v[n] === 'function')) return v;
+  }
+  document.getElementById('root').innerHTML =
+    '<pre style="font:12px/1.6 var(--rw-font-mono);color:var(--rw-oxide-deep);white-space:pre-wrap">' +
+    'Design-system bundle not loaded, or it does not export: ' + required.join(', ') +
+    '\nThis card renders once _ds_bundle.js is compiled.</pre>';
+  return null;
+}
+
+const __ds = dsScope(['Logo', 'Button', 'Card', 'Badge']);
+const { Logo, Button, Card, Badge } = __ds || {};
+if (__ds) {
+function Demo() {
+  return (
+    <div style={{ display:'flex', flexDirection:'column', gap:20 }}>
+      <div className="rw-row" style={{ gap:32 }}>
+        <Logo size={28} clearSpace={false} />
+        <Logo variant="symbol" size={16} clearSpace={false} />
+        <Logo variant="stacked" size={34} clearSpace={false} />
+      </div>
+      <div className="rw-row">
+        <Button>Start a project</Button>
+        <Button variant="secondary">See the approach</Button>
+        <Button variant="ghost">Cancelar</Button>
+        <Button variant="accent">Enviar</Button>
+        <Button size="sm">Nuevo</Button>
+        <Button disabled>Enviado</Button>
+      </div>
+      <div className="rw-row">
+        <Badge>En curso</Badge>
+        <Badge tone="positive">Entregado</Badge>
+        <Badge tone="negative">Vencido</Badge>
+        <Badge tone="info">En revisión</Badge>
+        <Badge tone="muted">Pendiente</Badge>
+        <Badge solid>Actual</Badge>
+      </div>
+      <div className="rw-grid" style={{ gridTemplateColumns:'repeat(2,1fr)' }}>
+        <Card label="01" title="Engineering & Architecture" footer="RW-014 · Q2 2026">
+          <p style={{ margin:0, font:'var(--rw-weight-regular) 13px/1.55 var(--rw-font-sans)', color:'var(--rw-text-secondary)' }}>Cloud architecture, platform build, DevOps.</p>
+        </Card>
+        <Card interactive label="02" title="Data & AI" footer="Interactive — border goes Basalt on hover">
+          <p style={{ margin:0, font:'var(--rw-weight-regular) 13px/1.55 var(--rw-font-sans)', color:'var(--rw-text-secondary)' }}>Pipelines, warehousing, applied models.</p>
+        </Card>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+}
+</script>
+</body></html>

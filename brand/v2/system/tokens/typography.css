@@ -1,0 +1,53 @@
+/* RiftWorks type. Archivo for everything read as language,
+   IBM Plex Mono for labels, figures and metadata. */
+
+:root {
+  --rw-font-sans:  "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --rw-font-mono:  "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+  --rw-font-email: Arial, Helvetica, sans-serif;   /* email clients only      */
+
+  /* Display · hero and covers only */
+  --rw-display-size:  4rem;      /* 64 */
+  --rw-display-lh:    1.02;
+  --rw-display-track: -0.035em;
+  --rw-display-width: 112;       /* Archivo wdth axis */
+
+  --rw-h1-size:  3rem;           /* 48 */
+  --rw-h1-lh:    1.06;
+  --rw-h1-track: -0.03em;
+
+  --rw-h2-size:  2rem;           /* 32 */
+  --rw-h2-lh:    1.12;
+  --rw-h2-track: -0.025em;
+
+  --rw-h3-size:  1.375rem;       /* 22 */
+  --rw-h3-lh:    1.25;
+  --rw-h3-track: -0.02em;
+
+  --rw-body-lg-size: 1.125rem;   /* 18 · max 60 characters */
+  --rw-body-lg-lh:   1.6;
+
+  --rw-body-size: 1rem;          /* 16 · max 72 characters */
+  --rw-body-lh:   1.62;
+
+  --rw-small-size: 0.875rem;     /* 14 · never smaller in print */
+  --rw-small-lh:   1.55;
+
+  --rw-label-size:  0.6875rem;   /* 11 · uppercase mono */
+  --rw-label-lh:    1;
+  --rw-label-track: 0.16em;
+
+  --rw-data-size: 0.8125rem;     /* 13 · figures, codes, metadata */
+  --rw-data-lh:   1.4;
+
+  --rw-weight-regular:  400;
+  --rw-weight-medium:   500;
+  --rw-weight-semibold: 600;
+  --rw-weight-bold:     700;
+
+  /* Interface labels sit tighter than editorial labels */
+  --rw-ui-label-size:  0.625rem; /* 10 */
+  --rw-ui-label-track: 0.14em;
+  --rw-button-size:    0.6875rem;/* 11 */
+  --rw-button-track:   0.1em;
+}

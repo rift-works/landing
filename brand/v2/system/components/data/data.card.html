@@ -1,0 +1,64 @@
+<!-- @dsCard group="Components" viewport="700x270" name="Data" subtitle="Table and timeline — every figure in mono" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:0;padding:20px;background:var(--rw-surface)}
+ .rw-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+ .rw-grid{display:grid;gap:18px}
+ .rw-cap{font:var(--rw-weight-medium) var(--rw-ui-label-size)/1 var(--rw-font-mono);letter-spacing:var(--rw-ui-label-track);text-transform:uppercase;color:var(--rw-text-secondary)}
+</style>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+// Resolve the design-system namespace at runtime rather than hard-coding it:
+// the compiler assigns the global, and it may not be "RiftWorks".
+function dsScope(required) {
+  const direct = window.RiftWorks;
+  if (direct && required.every(n => direct[n])) return direct;
+  for (const key of Object.keys(window)) {
+    const v = window[key];
+    if (v && typeof v === 'object' && required.every(n => typeof v[n] === 'function')) return v;
+  }
+  document.getElementById('root').innerHTML =
+    '<pre style="font:12px/1.6 var(--rw-font-mono);color:var(--rw-oxide-deep);white-space:pre-wrap">' +
+    'Design-system bundle not loaded, or it does not export: ' + required.join(', ') +
+    '\nThis card renders once _ds_bundle.js is compiled.</pre>';
+  return null;
+}
+
+const __ds = dsScope(['DataTable', 'Timeline']);
+const { DataTable, Timeline } = __ds || {};
+if (__ds) {
+function Demo() {
+  const [sel, setSel] = React.useState(['RW-014']);
+  return (
+    <div className="rw-grid" style={{ gridTemplateColumns:'1.4fr 1fr', alignItems:'start', gap:26 }}>
+      <DataTable
+        selectable selected={sel} onSelect={setSel} sortKey="amount"
+        columns={[
+          { key:'name', label:'Proyecto' },
+          { key:'phase', label:'Fase', width:88 },
+          { key:'amount', label:'Monto', width:70, align:'right', mono:true }
+        ]}
+        rows={[
+          { id:'RW-014', name:'RW-014 · Datos', phase:'Build', amount:'00,000' },
+          { id:'RW-012', name:'RW-012 · Cloud', phase:'Optimize', amount:'00,000' },
+          { id:'RW-009', name:'RW-009 · BI', phase:'Discover', amount:'0,000' }
+        ]} />
+      <Timeline items={[
+        { title:'Kick-off', date:'14 · 08 · 2026', state:'current' },
+        { title:'Arquitectura aprobada', date:'12 · 09 · 2026', state:'past' },
+        { title:'Primera entrega', date:'Pendiente', state:'pending' }
+      ]} />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+}
+</script>
+</body></html>

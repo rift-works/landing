@@ -1,0 +1,53 @@
+<!-- @dsCard group="Marketing site" viewport="1280x700" -->
+<!-- @startingPoint section="Marketing" subtitle="Bilingual marketing page — hero, services, approach, contact" viewport="1280x700" -->
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<title>RiftWorks — Marketing site</title>
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:0}</style>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+// Resolve the design-system namespace at runtime rather than hard-coding it:
+// the compiler assigns the global, and it may not be "RiftWorks".
+function dsScope(required) {
+  const direct = window.RiftWorks;
+  if (direct && required.every(n => direct[n])) return direct;
+  for (const key of Object.keys(window)) {
+    const v = window[key];
+    if (v && typeof v === 'object' && required.every(n => typeof v[n] === 'function')) return v;
+  }
+  document.getElementById('root').innerHTML =
+    '<pre style="font:12px/1.6 var(--rw-font-mono);color:var(--rw-oxide-deep);white-space:pre-wrap">' +
+    'Design-system bundle not loaded, or it does not export: ' + required.join(', ') +
+    '\nThis card renders once _ds_bundle.js is compiled.</pre>';
+  return null;
+}
+
+const __ds = dsScope(['Header', 'Hero', 'Services', 'Approach', 'Contact', 'Footer']);
+const { Header, Hero, Services, Approach, Contact, Footer } = __ds || {};
+if (__ds) {
+
+function Site() {
+  const [lang, setLang] = React.useState('es');
+  return (
+    <div style={{ background: 'var(--rw-surface)', minHeight: '100vh' }}>
+      <Header lang={lang} onLang={setLang} />
+      <Hero lang={lang} />
+      <Services lang={lang} />
+      <Approach lang={lang} />
+      <Contact lang={lang} />
+      <Footer lang={lang} />
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Site />);
+}
+</script>
+</body></html>

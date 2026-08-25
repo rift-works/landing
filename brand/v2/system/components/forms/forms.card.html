@@ -1,0 +1,87 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Forms" subtitle="Ten controls — inputs are the only things with a radius" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>body{margin:0;padding:20px;background:var(--rw-surface)}
+ .rw-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+ .rw-grid{display:grid;gap:18px}
+ .rw-cap{font:var(--rw-weight-medium) var(--rw-ui-label-size)/1 var(--rw-font-mono);letter-spacing:var(--rw-ui-label-track);text-transform:uppercase;color:var(--rw-text-secondary)}
+</style>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+// Resolve the design-system namespace at runtime rather than hard-coding it:
+// the compiler assigns the global, and it may not be "RiftWorks".
+function dsScope(required) {
+  const direct = window.RiftWorks;
+  if (direct && required.every(n => direct[n])) return direct;
+  for (const key of Object.keys(window)) {
+    const v = window[key];
+    if (v && typeof v === 'object' && required.every(n => typeof v[n] === 'function')) return v;
+  }
+  document.getElementById('root').innerHTML =
+    '<pre style="font:12px/1.6 var(--rw-font-mono);color:var(--rw-oxide-deep);white-space:pre-wrap">' +
+    'Design-system bundle not loaded, or it does not export: ' + required.join(', ') +
+    '\nThis card renders once _ds_bundle.js is compiled.</pre>';
+  return null;
+}
+
+const __ds = dsScope(['Input', 'Textarea', 'Select', 'MultiSelect', 'Checkbox', 'Radio', 'Switch', 'Slider', 'SearchField', 'Calendar']);
+const { Input, Textarea, Select, MultiSelect, Checkbox, Radio, Switch, Slider, SearchField, Calendar } = __ds || {};
+if (__ds) {
+function Demo() {
+  const [sel, setSel] = React.useState('Engineering');
+  const [tags, setTags] = React.useState(['Cloud','DevOps']);
+  const [chk, setChk] = React.useState(true);
+  const [radio, setRadio] = React.useState('m');
+  const [sw, setSw] = React.useState(true);
+  const [budget, setBudget] = React.useState(25000);
+  const [q, setQ] = React.useState('');
+  const [day, setDay] = React.useState(14);
+  const [note, setNote] = React.useState('');
+  return (
+    <div className="rw-grid" style={{ gridTemplateColumns:'repeat(3,1fr)', alignItems:'start' }}>
+      <div style={{ display:'flex', flexDirection:'column', gap:18 }}>
+        <Input label="Correo" placeholder="nombre@empresa.com" />
+        <Input label="Correo" defaultValue="nombre@" error="Revise la dirección de correo." />
+        <Textarea label="Alcance" help="Opcional" maxLength={500} value={note}
+          onChange={e => setNote(e.target.value)} placeholder="Describa el alcance esperado" rows={3} />
+      </div>
+      <div style={{ display:'flex', flexDirection:'column', gap:18 }}>
+        <Select label="Pilar" value={sel} onChange={setSel}
+          options={['Data & AI','Engineering','Strategy']} />
+        <MultiSelect label="Capacidades" value={tags} onChange={setTags} />
+        <SearchField value={q} onChange={setQ} placeholder="Buscar…" results={[
+          <span><b style={{fontWeight:600}}>Arqui</b>tectura de datos</span>,
+          <span><b style={{fontWeight:600}}>Arqui</b>tectura cloud</span>
+        ]} />
+        <Slider label="Presupuesto" min={5000} max={80000} value={budget}
+          onChange={setBudget} valueLabel={'USD ' + budget.toLocaleString('en-US')} />
+      </div>
+      <div style={{ display:'flex', flexDirection:'column', gap:16 }}>
+        <div style={{ display:'flex', flexDirection:'column', gap:11 }}>
+          <Checkbox label="Incluir soporte" checked={chk} onChange={setChk} />
+          <Checkbox label="Incluir formación" checked={false} onChange={() => {}} />
+        </div>
+        <div style={{ display:'flex', flexDirection:'column', gap:11, borderTop:'1px solid var(--rw-border-inner)', paddingTop:12 }}>
+          <Radio name="b" label="Mensual" checked={radio==='m'} onChange={() => setRadio('m')} />
+          <Radio name="b" label="Por fase" checked={radio==='f'} onChange={() => setRadio('f')} />
+        </div>
+        <div style={{ borderTop:'1px solid var(--rw-border-inner)', paddingTop:12, display:'flex', flexDirection:'column', gap:4 }}>
+          <Switch label="Notificaciones" checked={sw} onChange={setSw} />
+          <Switch label="Modo oscuro" checked={false} onChange={() => {}} />
+        </div>
+        <Calendar month={7} year={2026} selected={day} onSelect={setDay} locale="es" />
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+}
+</script>
+</body></html>

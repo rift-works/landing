@@ -1,0 +1,63 @@
+/* RiftWorks colour. Contrast ratios measured against WCAG 2.2.
+   Palette name: Basalt & Oxide. */
+
+:root {
+  /* Surfaces */
+  --rw-bone:         #EDE9E3;  /* primary light surface                       */
+  --rw-paper:        #FBFAF7;  /* raised surface, documents                   */
+  --rw-basalt:       #1A1A18;  /* body text on light · 14.41 on bone          */
+  --rw-basalt-deep:  #121210;  /* primary dark surface                        */
+
+  /* Accent */
+  --rw-oxide:        #D9410F;  /* fills and 18px+ text only · 3.68 on bone    */
+  --rw-oxide-deep:   #8F2A06;  /* links and small text · 6.94 on bone         */
+  --rw-oxide-lift:   #FF6A33;  /* accent on dark only · 6.57 on basalt-deep   */
+
+  /* Secondary */
+  --rw-ash:          #6B675F;  /* secondary text · 4.66 on bone               */
+  --rw-rule:         #D6D0C7;  /* borders and dividers                        */
+  --rw-rule-soft:    #E4DFD6;  /* inner dividers inside cards                */
+  --rw-rule-hair:    #EFEAE3;  /* row separators inside tables and lists      */
+  --rw-field-border: #C9C2B8;  /* input borders                               */
+
+  /* State */
+  --rw-positive:     #15693F;  /* 6.72 on white                               */
+  --rw-negative:     #A8180F;  /* 7.49 on white                               */
+  --rw-info:         #1B3A8F;  /* 10.25 on white                              */
+
+  /* Semantic aliases — use these in product code */
+  --rw-surface:         var(--rw-bone);
+  --rw-surface-raised:  var(--rw-paper);
+  --rw-surface-input:   #FFFFFF;
+  --rw-text:            var(--rw-basalt);
+  --rw-text-secondary:  var(--rw-ash);
+  --rw-text-muted:      var(--rw-field-border);
+  --rw-text-link:       var(--rw-oxide-deep);
+  --rw-border:          var(--rw-rule);
+  --rw-border-inner:    var(--rw-rule-soft);
+  --rw-border-field:    var(--rw-field-border);
+  --rw-accent:          var(--rw-oxide);
+  --rw-accent-text:     var(--rw-oxide-deep);
+  --rw-on-accent:       #FFFFFF;  /* 4.46 on oxide                            */
+  --rw-on-invert:       var(--rw-bone);
+  --rw-invert:          var(--rw-basalt);
+}
+
+/* Dark surfaces. Apply data-theme="dark" on any container, not only :root. */
+[data-theme="dark"] {
+  --rw-surface:        var(--rw-basalt-deep);
+  --rw-surface-raised: #1A1A18;
+  --rw-surface-input:  #1F1F1C;
+  --rw-text:           var(--rw-bone);        /* 15.51 on basalt-deep         */
+  --rw-text-secondary: rgba(237, 233, 227, 0.7);
+  --rw-text-muted:     rgba(237, 233, 227, 0.45);
+  --rw-text-link:      var(--rw-oxide-lift);  /* 6.57 on basalt-deep          */
+  --rw-border:         rgba(237, 233, 227, 0.2);
+  --rw-border-inner:   rgba(237, 233, 227, 0.14);
+  --rw-border-field:   rgba(237, 233, 227, 0.3);
+  --rw-accent:         var(--rw-oxide-lift);
+  --rw-accent-text:    var(--rw-oxide-lift);
+  --rw-on-accent:      var(--rw-basalt-deep);
+  --rw-on-invert:      var(--rw-basalt-deep);
+  --rw-invert:         var(--rw-bone);
+}

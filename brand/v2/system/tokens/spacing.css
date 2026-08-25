@@ -1,0 +1,31 @@
+/* RiftWorks space. Base 8, with a 4 for optical work inside controls. */
+
+:root {
+  --rw-space-1:    4px;
+  --rw-space-2:    8px;
+  --rw-space-3:   12px;
+  --rw-space-4:   16px;
+  --rw-space-6:   24px;
+  --rw-space-8:   32px;
+  --rw-space-12:  48px;
+  --rw-space-16:  64px;
+  --rw-space-24:  96px;
+  --rw-space-32: 128px;
+
+  /* Layout */
+  --rw-grid-desktop:  12;
+  --rw-grid-mobile:   4;
+  --rw-gutter:        var(--rw-space-6);
+  --rw-container-max: 1240px;
+
+  /* Control geometry — lifted from the drawn set, not snapped to a grid */
+  --rw-control-pad-y:      13px;
+  --rw-control-pad-x:      22px;
+  --rw-control-pad-y-sm:   9px;
+  --rw-control-pad-x-sm:   14px;
+  --rw-field-pad-y:        12px;
+  --rw-field-pad-x:        14px;
+  --rw-card-pad:           22px;
+  --rw-section-pad:        44px;
+  --rw-tap-min:            44px;  /* never smaller on touch */
+}
