@@ -1,33 +1,43 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
 
 export default function NotFound() {
   return (
-    <section className="py-24">
-      <Container>
-        <p className="mb-[18px] flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-muted">
-          <span className="inline-block h-px w-8 bg-signal" aria-hidden="true" />
+    <section className="rw-hero">
+      <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+        <span
+          style={{
+            font: "var(--rw-weight-medium) var(--rw-label-size)/1 var(--rw-font-mono)",
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            color: "var(--rw-text-secondary)",
+          }}
+        >
           404
-        </p>
-        <h1 className="max-w-[720px] font-display text-[clamp(40px,6vw,72px)] leading-[1.08] tracking-[-0.045em]">
+        </span>
+        <h1
+          style={{
+            margin: 0,
+            font: "var(--rw-weight-semibold) clamp(32px, 7vw, 58px)/1.04 var(--rw-font-sans)",
+            letterSpacing: "-0.035em",
+            fontStretch: "112%",
+          }}
+        >
           Esta ruta no existe.
         </h1>
-        <p className="mt-5 max-w-[52ch] text-ink-muted">
-          Vuelve al inicio o abre una conversación sobre un proyecto.
+        <p style={{ margin: 0, color: "var(--rw-text-secondary)", maxWidth: 420 }}>
+          Vuelve al inicio o escribe para iniciar un proyecto.
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
           <Button href="/">Ir al inicio</Button>
-          <Button href="/contacto" variant="ghost">
+          <Button variant="secondary" href="/#contacto">
             Iniciar un proyecto
           </Button>
         </div>
-        <p className="mt-8">
-          <Link href="/capacidades" className="font-mono text-[11px] uppercase tracking-[0.06em] text-signal">
-            Ver capacidades
-          </Link>
+        <p>
+          <Link href="/#servicios">Ver servicios</Link>
         </p>
-      </Container>
+      </div>
     </section>
   );
 }
