@@ -55,9 +55,12 @@ export function proxy(request: NextRequest) {
   }
 
   if (pathname === "/es" || pathname.startsWith("/es/")) {
-    const url = request.nextUrl.clone();
-    url.pathname = bare;
-    return applyLocale(NextResponse.redirect(url, 308), defaultLocale);
+    if (bare === "/" || isAppPath(bare)) {
+      const url = request.nextUrl.clone();
+      url.pathname = bare;
+      return applyLocale(NextResponse.redirect(url, 308), defaultLocale);
+    }
+    return nextWithLocale(request, defaultLocale);
   }
 
   if (pathname === "/en" || pathname.startsWith("/en/")) {
