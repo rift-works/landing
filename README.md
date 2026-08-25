@@ -1,19 +1,27 @@
 # RiftWorks Landing
 
-Landing corporativa de [RiftWorks](https://weareriftworks.com), reconstruida en Next.js a partir de `brand/v2`.
+Landing corporativa de [RiftWorks](https://weareriftworks.com) en Next.js, con el sistema **brand v2 Aperture**.
 
-Identidad activa: **Aperture** (canal CH-A), paleta Basalt & Oxide, tipografía Archivo + IBM Plex Mono. El layout sigue el kit de marketing en `brand/v2/system/ui_kits/marketing`.
+## Rutas
 
-## Página
+Los slugs son en inglés. El idioma se deduce en este orden: cookie `rw-locale` (si eligió ES/EN), `Accept-Language` del navegador, y país por geo (`x-vercel-ip-country` / Cloudflare). Los crawlers siempre ven el español en las URLs sin prefijo para que Google indexe ambos idiomas vía `hreflang`.
 
-Una sola superficie bilingüe (`ES` / `EN`):
+| Español (default) | English |
+| --- | --- |
+| `/` | `/en` |
+| `/services` | `/en/services` |
+| `/we-are` | `/en/we-are` |
+| `/contact` | `/en/contact` |
 
-- Header estático, conmutador de idioma y CTA oxide
-- Hero con modelo Discover → Architect → Build → Optimize
-- Cuatro pilares
-- Enfoque, compromiso mínimo USD 5,000 y FAQ
-- Formulario Iniciar un proyecto / Start a project
-- Pie invertido con `hola@weareriftworks.com`
+`/nosotros`, `/contacto` y `/capacidades` redirigen a las rutas nuevas.
+
+## SEO
+
+- `hreflang` (`es`, `en`, `x-default`) y canonical por página
+- `sitemap.xml` y `robots.txt`
+- JSON-LD de organización, sitio y FAQ
+- Open Graph e imagen OG por locale
+- `<html lang>` y `Content-Language` alineados al locale servido
 
 ## Desarrollo
 
@@ -26,10 +34,5 @@ Abre [http://localhost:3000](http://localhost:3000).
 
 ```bash
 npm run build
-npm run start
 npm run lint
 ```
-
-## Marca
-
-Fuente de verdad: `brand/v2/`. No usar la exploración Wordmark-led anterior.

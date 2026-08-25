@@ -1,12 +1,13 @@
-import { pillars, type Lang } from "@/lib/site";
+import type { Locale } from "@/lib/i18n";
+import { pillars } from "@/lib/site";
 
-export function Services({ lang }: { lang: Lang }) {
-  const items = pillars[lang];
+export function Services({ locale }: { locale: Locale }) {
+  const items = pillars[locale];
 
   return (
-    <section id="servicios" className="rw-services">
+    <section className="rw-services">
       {items.map(([n, title, body], index) => (
-        <div key={n} className="rw-service" data-last={index === items.length - 1 ? "true" : undefined}>
+        <article key={n} className="rw-service" data-last={index === items.length - 1 ? "true" : undefined}>
           <span
             style={{
               font: "var(--rw-weight-medium) var(--rw-label-size)/1 var(--rw-font-mono)",
@@ -15,23 +16,25 @@ export function Services({ lang }: { lang: Lang }) {
           >
             {n}
           </span>
-          <span
+          <h2
             style={{
+              margin: 0,
               font: "var(--rw-weight-semibold) 16px/1.3 var(--rw-font-sans)",
               color: "var(--rw-text)",
             }}
           >
             {title}
-          </span>
-          <span
+          </h2>
+          <p
             style={{
+              margin: 0,
               font: "var(--rw-weight-regular) 13px/1.55 var(--rw-font-sans)",
               color: "var(--rw-text-secondary)",
             }}
           >
             {body}
-          </span>
-        </div>
+          </p>
+        </article>
       ))}
     </section>
   );

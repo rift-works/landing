@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/Button";
-import { copy, phases, type Lang } from "@/lib/site";
+import { localePath, type Locale } from "@/lib/i18n";
+import { getCopy, phases } from "@/lib/site";
 
-export function Hero({ lang }: { lang: Lang }) {
-  const c = copy[lang];
+export function Hero({ locale }: { locale: Locale }) {
+  const c = getCopy(locale);
 
   return (
     <section className="rw-hero">
@@ -40,8 +41,8 @@ export function Hero({ lang }: { lang: Lang }) {
           {c.heroSub}
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-          <Button href="#contacto">{c.heroPrimary}</Button>
-          <Button variant="secondary" href="#enfoque">
+          <Button href={localePath(locale, "/contact")}>{c.heroPrimary}</Button>
+          <Button variant="secondary" href={localePath(locale, "/services")}>
             {c.heroSecondary}
           </Button>
         </div>

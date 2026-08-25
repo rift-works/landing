@@ -7,10 +7,11 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Slider } from "@/components/ui/Slider";
 import { Textarea } from "@/components/ui/Textarea";
-import { copy, site, type Lang } from "@/lib/site";
+import type { Locale } from "@/lib/i18n";
+import { getCopy, site } from "@/lib/site";
 
-export function Contact({ lang }: { lang: Lang }) {
-  const c = copy[lang];
+export function Contact({ locale }: { locale: Locale }) {
+  const c = getCopy(locale);
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [pillarIndex, setPillarIndex] = useState(0);
@@ -18,7 +19,7 @@ export function Contact({ lang }: { lang: Lang }) {
   const [scope, setScope] = useState("");
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
-  const pillar = c.pillars[pillarIndex] ?? c.pillars[0];
+  const pillar = c.formPillars[pillarIndex] ?? c.formPillars[0];
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -28,7 +29,7 @@ export function Contact({ lang }: { lang: Lang }) {
     }
 
     const subject = encodeURIComponent(
-      lang === "es" ? `Proyecto RiftWorks — ${company || email}` : `RiftWorks project — ${company || email}`,
+      locale === "es" ? `Proyecto RiftWorks — ${company || email}` : `RiftWorks project — ${company || email}`,
     );
     const body = encodeURIComponent(
       [
@@ -47,24 +48,35 @@ export function Contact({ lang }: { lang: Lang }) {
   }
 
   return (
-    <section id="contacto" className="rw-contact">
-      <h2
-        style={{
-          margin: 0,
-          font: "var(--rw-weight-semibold) var(--rw-h2-size)/var(--rw-h2-lh) var(--rw-font-sans)",
-          letterSpacing: "var(--rw-h2-track)",
-          color: "var(--rw-text)",
-        }}
-      >
-        {c.contactHead}
-      </h2>
+    <section className="rw-contact">
+      <div>
+        <h1
+          style={{
+            margin: 0,
+            font: "var(--rw-weight-semibold) var(--rw-h2-size)/var(--rw-h2-lh) var(--rw-font-sans)",
+            letterSpacing: "var(--rw-h2-track)",
+            color: "var(--rw-text)",
+          }}
+        >
+          {c.contactHead}
+        </h1>
+        <p
+          style={{
+            margin: "16px 0 0",
+            maxWidth: 420,
+            color: "var(--rw-text-secondary)",
+          }}
+        >
+          {c.contactLead}
+        </p>
+      </div>
       <form onSubmit={onSubmit} className="rw-contact-form" noValidate>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <Input
             label={c.labels.mail}
             type="email"
             autoComplete="email"
-            placeholder="nombre@empresa.com"
+            placeholder={c.emailPlaceholder}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             required
@@ -79,19 +91,19 @@ export function Contact({ lang }: { lang: Lang }) {
             label={c.labels.pillar}
             value={pillar}
             onChange={(value) => {
-              const next = c.pillars.findIndex((item) => item === value);
+              const next = c.formPillars.findIndex((item) => item === value);
               setPillarIndex(next === -1 ? 0 : next);
             }}
-            options={c.pillars}
+            options={[...c.formPillars]}
             placeholder={c.selectPlaceholder}
           />
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <Slider
             label={c.labels.budget}
-            min={5000}
+            min={0}
             max={120000}
-            step={5000}
+            step={1000}
             value={budget}
             onChange={setBudget}
             valueLabel={`USD ${budget.toLocaleString("en-US")}`}

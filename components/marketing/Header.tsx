@@ -1,60 +1,53 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "@/components/brand/Logo";
+import { LanguageSwitch } from "@/components/i18n/LanguageSwitch";
 import { Button } from "@/components/ui/Button";
-import { copy, type Lang } from "@/lib/site";
+import { localePath, stripLocalePrefix, type Locale } from "@/lib/i18n";
+import { getCopy } from "@/lib/site";
 
-type HeaderProps = {
-  lang: Lang;
-  onLang: (lang: Lang) => void;
-};
-
-export function Header({ lang, onLang }: HeaderProps) {
-  const c = copy[lang];
+export function Header({ locale }: { locale: Locale }) {
+  const c = getCopy(locale);
+  const pathname = usePathname() || "/";
+  const current = stripLocalePrefix(pathname);
 
   return (
     <header className="rw-header">
-      <Link href="/" style={{ borderBottom: "none", color: "inherit" }} aria-label="RiftWorks">
+      <Link
+        href={localePath(locale, "/")}
+        style={{ borderBottom: "none", color: "inherit" }}
+        aria-label="RiftWorks"
+      >
         <Logo size={24} clearSpace={false} />
       </Link>
-      <nav className="rw-nav" aria-label={lang === "es" ? "Principal" : "Primary"}>
-        {c.nav.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            style={{
-              font: "var(--rw-weight-regular) 12px/1 var(--rw-font-mono)",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--rw-text)",
-              borderBottom: "none",
-              minHeight: 44,
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-          >
-            {item.label}
-          </a>
-        ))}
-        <button
-          type="button"
-          onClick={() => onLang(lang === "es" ? "en" : "es")}
-          aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
-          style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: 0,
-            minHeight: 44,
-            font: "var(--rw-weight-regular) 12px/1 var(--rw-font-mono)",
-            letterSpacing: "0.1em",
-            color: "var(--rw-text-secondary)",
-          }}
-        >
-          {c.langSwitch}
-        </button>
-        <Button variant="accent" size="sm" href="#contacto">
+      <nav className="rw-nav" aria-label={c.navAria}>
+        {c.nav.map((item) => {
+          const href = localePath(locale, item.href);
+          const active = current === item.href;
+          return (
+            <Link
+              key={item.href}
+              href={href}
+              aria-current={active ? "page" : undefined}
+              style={{
+                font: "var(--rw-weight-regular) 12px/1 var(--rw-font-mono)",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: active ? "var(--rw-text)" : "var(--rw-text-secondary)",
+                borderBottom: active ? "2px solid var(--rw-invert)" : "none",
+                minHeight: 44,
+                display: "inline-flex",
+                alignItems: "center",
+              }}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
+        <LanguageSwitch locale={locale} />
+        <Button variant="accent" size="sm" href={localePath(locale, "/contact")}>
           {c.cta}
         </Button>
       </nav>

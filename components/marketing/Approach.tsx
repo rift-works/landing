@@ -1,11 +1,12 @@
 import { Accordion } from "@/components/ui/Accordion";
-import { copy, type Lang } from "@/lib/site";
+import type { Locale } from "@/lib/i18n";
+import { getCopy } from "@/lib/site";
 
-export function Approach({ lang }: { lang: Lang }) {
-  const c = copy[lang];
+export function Approach({ locale }: { locale: Locale }) {
+  const c = getCopy(locale);
 
   return (
-    <section id="enfoque" className="rw-split">
+    <section className="rw-split">
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         <h2
           style={{
@@ -27,21 +28,6 @@ export function Approach({ lang }: { lang: Lang }) {
         >
           {c.approachBody}
         </p>
-        <div
-          style={{
-            borderTop: "var(--rw-border-strong) solid var(--rw-invert)",
-            paddingTop: 14,
-            display: "flex",
-            justifyContent: "space-between",
-            gap: "var(--rw-space-4)",
-            font: "var(--rw-weight-regular) var(--rw-data-size)/1.4 var(--rw-font-mono)",
-          }}
-        >
-          <span style={{ color: "var(--rw-text-secondary)", textTransform: "uppercase", letterSpacing: "0.12em" }}>
-            {c.min}
-          </span>
-          <span style={{ color: "var(--rw-text)" }}>USD 5,000</span>
-        </div>
       </div>
       <Accordion items={c.faq} />
     </section>
