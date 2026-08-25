@@ -1,0 +1,40 @@
+/* Minimal resets consumers can rely on. Deliberately small: the system is
+   inline-styled or component-styled, not utility-classed. */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--rw-surface);
+  color: var(--rw-text);
+  font-family: var(--rw-font-sans);
+  font-size: var(--rw-body-size);
+  line-height: var(--rw-body-lh);
+  text-wrap: pretty;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--rw-text-link);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--rw-text-link) 35%, transparent);
+  transition: color var(--rw-duration) var(--rw-easing),
+              border-color var(--rw-duration) var(--rw-easing);
+}
+
+a:hover {
+  color: var(--rw-text);
+  border-bottom-color: var(--rw-text);
+}
+
+:focus-visible {
+  outline: var(--rw-border-strong) solid var(--rw-accent-text);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--rw-oxide);
+  color: #FFFFFF;
+}

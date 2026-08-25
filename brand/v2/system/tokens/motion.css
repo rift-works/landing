@@ -1,0 +1,14 @@
+/* RiftWorks motion. Short, linear-feeling, never bouncy. */
+
+:root {
+  --rw-duration:      160ms;
+  --rw-duration-slow: 240ms;  /* dialogs and panels only                     */
+  --rw-easing:        cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --rw-duration: 0ms;
+    --rw-duration-slow: 0ms;
+  }
+}

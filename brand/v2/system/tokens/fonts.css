@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+/* RiftWorks ships two Google-hosted families. No licensed binaries exist in this
+   project; if RiftWorks later self-hosts, replace the import above with local
+   @font-face rules pointing at tokens/fonts/*.woff2 and keep the family names.
+
+   Archivo      — display and body. Variable, with a width axis (75..125).
+   IBM Plex Mono — labels, figures, metadata. Never a sentence.
+   Arial        — email fallback only, declared in typography.css. */
