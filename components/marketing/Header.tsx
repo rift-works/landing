@@ -36,10 +36,12 @@ export function Header({ locale }: { locale: Locale }) {
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: active ? "var(--rw-text)" : "var(--rw-text-secondary)",
-                borderBottom: active ? "2px solid var(--rw-invert)" : "none",
+                borderBottom: active ? "2px solid var(--rw-invert)" : "2px solid transparent",
                 minHeight: 44,
                 display: "inline-flex",
                 alignItems: "center",
+                transition:
+                  "color var(--rw-duration) var(--rw-easing), border-color var(--rw-duration) var(--rw-easing)",
               }}
             >
               {item.label}

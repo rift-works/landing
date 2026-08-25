@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Approach } from "@/components/marketing/Approach";
+import { CtaBand } from "@/components/marketing/CtaBand";
 import { PageIntro } from "@/components/marketing/PageIntro";
+import { Rebuild } from "@/components/marketing/Rebuild";
 import { Services } from "@/components/marketing/Services";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { isLocale } from "@/lib/i18n";
@@ -29,7 +31,9 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       <JsonLd data={faqJsonLd(copy.faq)} />
       <PageIntro locale={locale} kicker={copy.servicesTitle} title={copy.servicesHead} lead={copy.servicesLead} />
       <Services locale={locale} />
+      <Rebuild locale={locale} />
       <Approach locale={locale} />
+      <CtaBand locale={locale} />
     </>
   );
 }

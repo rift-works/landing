@@ -7,33 +7,15 @@ export function Services({ locale }: { locale: Locale }) {
   return (
     <section className="rw-services">
       {items.map(([n, title, body], index) => (
-        <article key={n} className="rw-service" data-last={index === items.length - 1 ? "true" : undefined}>
-          <span
-            style={{
-              font: "var(--rw-weight-medium) var(--rw-label-size)/1 var(--rw-font-mono)",
-              color: "var(--rw-text-secondary)",
-            }}
-          >
-            {n}
-          </span>
-          <h2
-            style={{
-              margin: 0,
-              font: "var(--rw-weight-semibold) 16px/1.3 var(--rw-font-sans)",
-              color: "var(--rw-text)",
-            }}
-          >
-            {title}
-          </h2>
-          <p
-            style={{
-              margin: 0,
-              font: "var(--rw-weight-regular) 13px/1.55 var(--rw-font-sans)",
-              color: "var(--rw-text-secondary)",
-            }}
-          >
-            {body}
-          </p>
+        <article
+          key={n}
+          className="rw-service"
+          data-last={index === items.length - 1 ? "true" : undefined}
+          style={{ animationDelay: `${index * 40}ms` }}
+        >
+          <span className="rw-rebuild-code">{n}</span>
+          <h2 className="rw-rebuild-title">{title}</h2>
+          <p className="rw-rebuild-body">{body}</p>
         </article>
       ))}
     </section>
