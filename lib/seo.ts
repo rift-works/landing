@@ -45,6 +45,11 @@ export function buildMetadata(locale: Locale, path: string, title: string, descr
       title: fullTitle,
       description,
     },
+    verification: {
+      other: {
+        "facebook-domain-verification": "onrdky4zpgg7a4m2xrtoumfs9mv82m",
+      },
+    },
   };
 }
 

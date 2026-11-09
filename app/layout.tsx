@@ -34,6 +34,11 @@ export const metadata: Metadata = {
     icon: [{ url: "/brand/favicon.svg", type: "image/svg+xml" }],
     apple: [{ url: "/brand/logo-symbol.svg" }],
   },
+  verification: {
+    other: {
+      "facebook-domain-verification": "onrdky4zpgg7a4m2xrtoumfs9mv82m",
+    },
+  },
 };
 
 export const viewport: Viewport = {
