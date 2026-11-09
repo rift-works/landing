@@ -5,7 +5,6 @@ import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
-import { Slider } from "@/components/ui/Slider";
 import { Textarea } from "@/components/ui/Textarea";
 import type { Locale } from "@/lib/i18n";
 import { getCopy, site } from "@/lib/site";
@@ -15,36 +14,60 @@ export function Contact({ locale }: { locale: Locale }) {
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [pillarIndex, setPillarIndex] = useState(0);
-  const [budget, setBudget] = useState(25000);
   const [scope, setScope] = useState("");
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const pillar = c.formPillars[pillarIndex] ?? c.formPillars[0];
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!email.trim() || !scope.trim()) {
       setError(c.formError);
       return;
     }
 
-    const subject = encodeURIComponent(
-      locale === "es" ? `Proyecto RiftWorks — ${company || email}` : `RiftWorks project — ${company || email}`,
-    );
-    const body = encodeURIComponent(
-      [
-        `${c.labels.mail}: ${email}`,
-        `${c.labels.co}: ${company || "—"}`,
-        `${c.labels.pillar}: ${pillar}`,
-        `${c.labels.budget}: USD ${budget.toLocaleString("en-US")}`,
-        "",
-        scope,
-      ].join("\n"),
-    );
-
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
     setError("");
-    setSent(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          company: company.trim(),
+          pillar,
+          scope: scope.trim(),
+          locale,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Server submission failed");
+      }
+
+      setSent(true);
+      setError("");
+    } catch {
+      // Graceful fallback to mailto if API fails or offline
+      const subject = encodeURIComponent(
+        locale === "es" ? `Proyecto RiftWorks — ${company || email}` : `RiftWorks project — ${company || email}`,
+      );
+      const body = encodeURIComponent(
+        [
+          `${c.labels.mail}: ${email}`,
+          `${c.labels.co}: ${company || "—"}`,
+          `${c.labels.pillar}: ${pillar}`,
+          "",
+          scope,
+        ].join("\n"),
+      );
+      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+      setSent(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -99,18 +122,9 @@ export function Contact({ locale }: { locale: Locale }) {
           />
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-          <Slider
-            label={c.labels.budget}
-            min={0}
-            max={120000}
-            step={1000}
-            value={budget}
-            onChange={setBudget}
-            valueLabel={`USD ${budget.toLocaleString("en-US")}`}
-          />
           <Textarea
             label={c.labels.scope}
-            rows={3}
+            rows={5}
             value={scope}
             onChange={(event) => setScope(event.target.value)}
             maxLength={500}
@@ -122,8 +136,8 @@ export function Contact({ locale }: { locale: Locale }) {
               {c.sentBody}
             </Alert>
           ) : (
-            <Button type="submit" fullWidth>
-              {c.send}
+            <Button type="submit" fullWidth disabled={isSubmitting}>
+              {isSubmitting ? (locale === "es" ? "Registrando…" : "Submitting…") : c.send}
             </Button>
           )}
         </div>

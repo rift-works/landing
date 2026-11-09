@@ -1,7 +1,7 @@
 <!-- RW-D-02 -->
 # Voz y redacción
 
-**RiftWorks v2 · RW-D-02** · Aprobado 17 · 08 · 2026 — Gabriel Obando, Axel García
+**RiftWorks · RW-D-02 (Oficial)** · Aprobado 17 · 08 · 2026 — Gabriel Obando, Axel García
 
 Cómo escribe la marca, en cualquier medio.
 

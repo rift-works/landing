@@ -1,7 +1,7 @@
 <!-- RW-D-03 -->
 # Sistema visual
 
-**RiftWorks v2 · RW-D-03** · Aprobado 17 · 08 · 2026 — Gabriel Obando, Axel García
+**RiftWorks · RW-D-03 (Oficial)** · Aprobado 17 · 08 · 2026 — Gabriel Obando, Axel García
 
 Marca, paleta, tipografía y lenguaje de superficie.
 

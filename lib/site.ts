@@ -11,16 +11,56 @@ export const phases = ["Discover", "Architect", "Build", "Optimize"] as const;
 
 export const pillars = {
   es: [
-    ["01", "Ingeniería y Arquitectura", "Arquitectura cloud, construcción de plataforma, DevOps."],
-    ["02", "Datos e IA", "Pipelines, almacenamiento, modelos aplicados."],
-    ["03", "Diseño de Producto y Marca", "Investigación, sistemas de diseño, identidad."],
-    ["04", "Estrategia y Transformación", "Diagnóstico operativo, hoja de ruta, gobierno."],
+    [
+      "01",
+      "Ingeniería y Arquitectura",
+      "Arquitectura cloud, plataformas de software distribuidas y entrega continua.",
+      ["Blueprints de Arquitectura", "Plataformas en Producción", "Pipelines CI/CD"]
+    ],
+    [
+      "02",
+      "Datos e IA",
+      "Pipelines de procesamiento, almacenamiento estructurado y modelos aplicados.",
+      ["Data Warehouses", "Procesamiento en Tiempo Real", "Inferencia de Modelos"]
+    ],
+    [
+      "03",
+      "Diseño de Producto y Marca",
+      "Investigación con usuarios, sistemas de diseño en código e interfaces de alta conversión.",
+      ["Design Systems en Código", "Prototipos Funcionales", "Experiencia de Usuario"]
+    ],
+    [
+      "04",
+      "Estrategia y Transformación",
+      "Diagnóstico operativo, hoja de ruta técnica y modernización de sistemas.",
+      ["Auditoría de Deuda Técnica", "Plan de Modernización", "Transferencia al Equipo"]
+    ],
   ],
   en: [
-    ["01", "Engineering & Architecture", "Cloud architecture, platform build, DevOps."],
-    ["02", "Data & AI", "Pipelines, warehousing, applied models."],
-    ["03", "Product Design & Brand Experience", "Research, design systems, identity."],
-    ["04", "Strategy & Business Transformation", "Operational diagnosis, roadmap, governance."],
+    [
+      "01",
+      "Engineering & Architecture",
+      "Cloud architecture, distributed software platforms, and continuous delivery.",
+      ["Architecture Blueprints", "Production Platforms", "CI/CD Pipelines"]
+    ],
+    [
+      "02",
+      "Data & AI",
+      "Data processing pipelines, structured warehousing, and applied machine learning.",
+      ["Data Warehouses", "Realtime Data Pipelines", "Model Inference"]
+    ],
+    [
+      "03",
+      "Product Design & Brand Experience",
+      "User research, code-level design systems, and high-conversion interfaces.",
+      ["Code Design Systems", "Interactive Prototypes", "User Experience"]
+    ],
+    [
+      "04",
+      "Strategy & Business Transformation",
+      "Operational diagnosis, technical roadmaps, and systems modernization.",
+      ["Technical Debt Audit", "Modernization Roadmap", "Team Knowledge Transfer"]
+    ],
   ],
 } as const;
 
@@ -77,6 +117,44 @@ export const copy = {
     problemHead: "El trabajo es reconstruir operaciones complejas.",
     problemBody:
       "RiftWorks trabaja con equipos en crecimiento que ya no pueden sostener sistemas fragmentados. Diagnóstico, arquitectura y construcción quedan en las mismas manos.",
+
+    // Case Studies
+    caseStudiesKicker: "Casos de Producción",
+    caseStudiesHead: "Ingeniería probada en el mercado.",
+    caseStudiesLead:
+      "Construimos plataformas que operan en producción, procesan transacciones y sostienen operaciones comerciales críticas.",
+    caseStudiesVisit: "Visitar plataforma",
+    caseStudiesOutputsLabel: "Outputs de valor entregados",
+    caseStudies: [
+      {
+        id: "canela",
+        code: "RW-CASE-01",
+        client: "Canela",
+        url: "https://canela.vet",
+        badge: "Pet-care & E-commerce en vivo",
+        title: "Plataforma integral de salud, delivery y comercio para mascotas en Nicaragua.",
+        summary:
+          "Diseño y construcción del ecosistema digital completo: aplicaciones móviles para iOS y Android, catálogo transaccional con pagos mixtos, rastreo logístico en tiempo real y expedientes veterinarios digitales.",
+        challenge:
+          "Coordinar compras con inventario dinámico, múltiples métodos de pago (tarjeta, transferencia y efectivo) y entregas a domicilio en tiempo real, junto con el historial médico y de vacunación de miles de mascotas.",
+        solution:
+          "Arquitectura móvil de alto rendimiento, backend transaccional con estados en tiempo real y una experiencia de usuario sin fricción pensada para el mercado centroamericano.",
+        metrics: [
+          { label: "Plataformas", value: "iOS + Android" },
+          { label: "Operación", value: "En producción" },
+          { label: "Logística", value: "Tiempo real" },
+          { label: "Propiedad", value: "100% del cliente" },
+        ],
+        outputs: [
+          "Aplicación móvil nativa/multiplataforma en App Store y Google Play",
+          "Módulo de tracking logístico y estados de entrega en vivo",
+          "Expediente clínico y carnet de vacunas digital por mascota",
+          "Pasarela transaccional de pagos combinados",
+        ],
+        tags: ["Mobile Apps", "E-Commerce", "Realtime Logistics", "Digital Health"],
+      },
+    ],
+
     phasesKicker: "Fases",
     phasesHead: "Cuatro fases, siempre en este orden.",
     phasesLead: "Cada fase termina en un entregable y se factura por separado.",
@@ -135,9 +213,24 @@ export const copy = {
       { title: "Internacional", body: "Documentación y entrega en inglés." },
       { title: "Canal", body: "CH-A. Una ejecución, cuatro capacidades." },
     ],
-    foundersKicker: "Equipo",
+    foundersKicker: "Liderazgo técnico",
     foundersHead: "Gabriel Obando y Axel García.",
-    foundersCta: "Ver nosotros",
+    foundersLead: "Dirección técnica y de producto con sede en Managua y alcance internacional.",
+    foundersCta: "Conocer al equipo",
+    foundersList: [
+      {
+        name: "Gabriel Obando",
+        role: "Chief Technology Architect",
+        focus: "Arquitectura cloud, plataformas distribuidas y sistemas de alta escala.",
+        location: "Managua, Nicaragua",
+      },
+      {
+        name: "Axel García",
+        role: "Principal Product Architect",
+        focus: "Sistemas de diseño, ingeniería de producto y estrategia digital.",
+        location: "Managua, Nicaragua",
+      },
+    ],
     ctaKicker: "Siguiente paso",
     ctaHead: "Iniciar un proyecto.",
     ctaBody: "Describe el problema operativo, el sistema actual y lo que necesitas construir.",
@@ -147,24 +240,43 @@ export const copy = {
     servicesHead: "Cuatro capacidades, una sola ejecución.",
     servicesLead:
       "Cerramos la brecha entre objetivos de negocio y capacidades tecnológicas. Engineering es el punto de entrada; Data & AI, el segundo.",
+    outputsLabel: "Artefactos y entregables de valor:",
     approachHead: "Cuatro fases, siempre en este orden.",
     approachBody:
       "No renombramos las fases por cliente. Cada una termina en un entregable que se factura por separado.",
+
+    // FAQ
+    faqKicker: "Certeza operativa",
+    faqHead: "Preguntas frecuentes.",
+    faqLead: "Respuestas directas a cómo protegemos tu negocio, cómo trabajamos y cómo se estructura la inversión.",
     faq: [
       {
-        question: "¿Qué incluye Discover?",
+        question: "¿Quién es dueño del código y de la propiedad intelectual?",
         answer:
-          "Dos semanas de diagnóstico, entrevistas con el equipo y un mapa del estado actual de la operación.",
+          "El cliente es dueño del 100% de la propiedad intelectual, el código y los artefactos desde el primer día. No retenemos licencias propietarias ni creamos dependencias forzadas.",
       },
       {
-        question: "¿Cómo se factura?",
-        answer: "Por fase, contra entregable.",
+        question: "¿Cómo se estructuran los proyectos y la inversión?",
+        answer:
+          "Trabajamos por fases cerradas con entregables definidos, no por horas ambiguas. Los compromisos comienzan en USD 5,000 y cada fase se aprueba y se factura de forma independiente contra entrega.",
       },
       {
-        question: "¿Trabajan en inglés?",
-        answer: "Sí. Toda la documentación existe en ambos idiomas.",
+        question: "¿Cómo interactúan con nuestro equipo interno?",
+        answer:
+          "Nos adaptamos a su operación: podemos operar como una célula técnica autónoma de ejecución o integrarnos directamente con sus líderes de ingeniería y producto para acelerar la entrega.",
+      },
+      {
+        question: "¿Cómo garantizan la confidencialidad técnica y comercial?",
+        answer:
+          "Firmamos un acuerdo de confidencialidad (NDA) antes de cualquier revisión técnica o acceso a datos. Su arquitectura e información operativa permanecen estrictamente confidenciales.",
+      },
+      {
+        question: "¿Trabajan en inglés con clientes internacionales?",
+        answer:
+          "Sí. Todo el equipo es bilingüe y toda la documentación, especificaciones de arquitectura y comunicación técnica se entregan en inglés o español según el cliente.",
       },
     ],
+
     weAreTitle: "Nosotros",
     weAreDescription:
       "RiftWorks es una consultora de tecnología con sede en Managua, fundada por Gabriel Obando y Axel García.",
@@ -215,7 +327,7 @@ export const copy = {
     emailPlaceholder: "nina.v@example.com",
     selectPlaceholder: "Seleccione…",
     formError: "Completa correo y alcance antes de enviar.",
-    legal: "RiftWorks · Managua, Nicaragua · Marca en proceso de registro",
+    legal: "RiftWorks · Managua, Nicaragua · Marca oficial Aperture",
     notFoundTitle: "Esta ruta no existe.",
     notFoundBody: "Vuelve al inicio o escribe para iniciar un proyecto.",
     notFoundHome: "Ir al inicio",
@@ -251,9 +363,9 @@ export const copy = {
     heroHead:
       "We integrate software, data and strategic design to transform complex operations.",
     heroSub:
-      "RiftWorks understands the problem, structures the solution, and has the technical capacity to build it.",
+      "RiftWorks understands the problem, structures the solution, and has the engineering capacity to build it.",
     heroPrimary: "Start a project",
-    heroSecondary: "See services",
+    heroSecondary: "View services",
     model: "Delivery model",
     channel: "CH-A",
     signals: [
@@ -270,127 +382,199 @@ export const copy = {
       "Strategy",
     ],
     problemKicker: "Audience",
-    problemHead: "The work is to rebuild complex operations.",
+    problemHead: "The mandate is rebuilding complex operations.",
     problemBody:
-      "RiftWorks works with growing teams that can no longer sustain fragmented systems. Diagnosis, architecture and construction stay in the same hands.",
+      "RiftWorks partners with growing organizations that can no longer sustain fragmented systems. Diagnosis, architecture, and construction remain in the same hands.",
+
+    // Case Studies
+    caseStudiesKicker: "Production Case Studies",
+    caseStudiesHead: "Market-proven engineering.",
+    caseStudiesLead:
+      "We engineer platforms operating in production, processing transactions, and sustaining critical commercial operations.",
+    caseStudiesVisit: "Visit platform",
+    caseStudiesOutputsLabel: "Delivered value outputs",
+    caseStudies: [
+      {
+        id: "canela",
+        code: "RW-CASE-01",
+        client: "Canela",
+        url: "https://canela.vet",
+        badge: "Pet-care & Live E-Commerce",
+        title: "Full-scale pet health, delivery, and e-commerce platform in Nicaragua.",
+        summary:
+          "Design and build of the complete digital ecosystem: native/cross-platform mobile apps for iOS and Android, dynamic e-commerce catalog with mixed payment gateways, real-time logistics tracking, and digital veterinary records.",
+        challenge:
+          "Coordinate high-frequency orders with dynamic inventory, mixed payment options (card, bank transfer, and cash on delivery), and live doorstep routing alongside medical and vaccination records for thousands of pets.",
+        solution:
+          "High-performance mobile architecture, transactional backend with real-time state synchronization, and a frictionless checkout experience crafted for the Central American market.",
+        metrics: [
+          { label: "Platforms", value: "iOS + Android" },
+          { label: "Status", value: "Live production" },
+          { label: "Logistics", value: "Real-time" },
+          { label: "Ownership", value: "100% Client-owned" },
+        ],
+        outputs: [
+          "Native/cross-platform mobile applications on App Store and Google Play",
+          "Real-time logistics dispatch and live order tracking module",
+          "Digital health and vaccination medical records per pet",
+          "Integrated multi-gateway payment processing infrastructure",
+        ],
+        tags: ["Mobile Apps", "E-Commerce", "Realtime Logistics", "Digital Health"],
+      },
+    ],
+
     phasesKicker: "Phases",
-    phasesHead: "Four phases, always in this order.",
-    phasesLead: "Each phase ends in a deliverable and is invoiced separately.",
+    phasesHead: "Four phases, always in this sequence.",
+    phasesLead: "Every phase concludes with a concrete deliverable and is billed independently.",
     phaseDetail: [
       {
         name: "Discover",
         code: "01",
-        body: "Two weeks of diagnosis, interviews with the team, and a map of the operation as it stands.",
+        body: "Two weeks of deep diagnosis, team interviews, and an operational map of the current state.",
       },
       {
         name: "Architect",
         code: "02",
-        body: "Architecture, delivery sequence, and acceptance criteria written before construction starts.",
+        body: "System architecture, delivery milestones, and acceptance criteria documented before writing code.",
       },
       {
         name: "Build",
         code: "03",
-        body: "Construction of the platform, the data system, or the product, against the phase deliverable.",
+        body: "Production build of the platform, data infrastructure, or product against agreed specifications.",
       },
       {
         name: "Optimize",
         code: "04",
-        body: "Operation, measurement, and adjustment of the system already in production.",
+        body: "Monitoring, performance tuning, and operational scaling of the live system.",
       },
     ],
     rebuildKicker: "Scope",
     rebuildHead: "What gets rebuilt.",
-    rebuildLead: "Four kinds of work. Engineering is the main entry point; Data & AI is the second.",
+    rebuildLead: "Four engagement profiles. The primary entry point is engineering; the second is data and AI.",
     rebuild: [
       {
         code: "01",
         title: "Fragmented systems",
-        body: "Cloud architecture, platform build, and continuous delivery.",
+        body: "Cloud architecture, resilient platform engineering, and automated delivery.",
       },
       {
         code: "02",
         title: "Ungoverned data",
-        body: "Pipelines, warehousing, and applied models that can be operated.",
+        body: "Pipelines, warehousing, and practical machine learning models that can be operated.",
       },
       {
         code: "03",
-        title: "Products without a system",
-        body: "Research, design systems, and identity that hold the product together.",
+        title: "Products without systems",
+        body: "User research, code design systems, and identity frameworks that sustain the product.",
       },
       {
         code: "04",
-        title: "Operations without a route",
-        body: "Operational diagnosis, roadmap, and governance to execute.",
+        title: "Operations without direction",
+        body: "Operational diagnosis, technical roadmaps, and systems governance to execute.",
       },
     ],
     coverageKicker: "Coverage",
-    coverageHead: "Managua as the seat. Spanish and English as working languages.",
+    coverageHead: "Managua headquarters. English and Spanish as working languages.",
     coverage: [
-      { title: "Seat", body: "Managua, Nicaragua." },
+      { title: "HQ", body: "Managua, Nicaragua." },
       { title: "Regional", body: "Documentation and delivery in Spanish." },
       { title: "International", body: "Documentation and delivery in English." },
-      { title: "Channel", body: "CH-A. One execution, four capabilities." },
+      { title: "Channel", body: "CH-A. One execution across four disciplines." },
     ],
-    foundersKicker: "Team",
-    foundersHead: "Gabriel Obando and Axel García.",
-    foundersCta: "See we are",
+    foundersKicker: "Technical Leadership",
+    foundersHead: "Gabriel Obando & Axel García.",
+    foundersLead: "Software architecture and product design based in Managua with international reach.",
+    foundersCta: "Meet the team",
+    foundersList: [
+      {
+        name: "Gabriel Obando",
+        role: "Chief Technology Architect",
+        focus: "Cloud architecture, distributed systems, and scalable platform engineering.",
+        location: "Managua, Nicaragua",
+      },
+      {
+        name: "Axel García",
+        role: "Principal Product Architect",
+        focus: "Design systems, digital product engineering, and technical strategy.",
+        location: "Managua, Nicaragua",
+      },
+    ],
     ctaKicker: "Next step",
     ctaHead: "Start a project.",
-    ctaBody: "Describe the operational problem, the current system, and what you need to build.",
+    ctaBody: "Describe your operational bottleneck, your current stack, and what needs to be engineered.",
     servicesTitle: "Services",
     servicesDescription:
-      "Engineering and architecture, data and AI, product design and strategy for scaling organizations.",
-    servicesHead: "Four capabilities, one execution.",
+      "Software architecture, data and AI, product design, and strategy for growing organizations.",
+    servicesHead: "Four disciplines, unified execution.",
     servicesLead:
-      "We close the gap between business objectives and technical capability. Engineering is the main entry point; Data & AI is the second.",
+      "We bridge the gap between business objectives and technical capability. Engineering is the primary entry point; Data & AI, the second.",
+    outputsLabel: "Delivered value outputs:",
     approachHead: "Four phases, always in this order.",
     approachBody:
-      "We do not rename the phases per client. Each one ends in a deliverable and is invoiced separately.",
+      "We never rename phases per client. Every phase concludes with a concrete deliverable billed independently.",
+
+    // FAQ
+    faqKicker: "Operational Certainty",
+    faqHead: "Frequently Asked Questions.",
+    faqLead: "Direct answers on intellectual property, team integration, and engagement economics.",
     faq: [
       {
-        question: "What does Discover include?",
+        question: "Who owns the code and intellectual property?",
         answer:
-          "Two weeks of diagnosis, interviews with the team, and a map of the operation as it stands.",
+          "The client owns 100% of all intellectual property, source code, and architecture assets from day one. We never retain proprietary licensing or create artificial lock-in.",
       },
       {
-        question: "How is it invoiced?",
-        answer: "By phase, against a deliverable.",
+        question: "How are engagements structured and billed?",
+        answer:
+          "We operate in fixed phases with defined deliverables, never ambiguous open billing. Minimum engagements start at USD 5,000, and each phase is approved and billed independently upon milestone delivery.",
       },
       {
-        question: "Do you work in Spanish?",
-        answer: "Yes. Every document exists in both languages.",
+        question: "How do you integrate with our internal engineering team?",
+        answer:
+          "We adapt to your structure: either as an autonomous delivery squad or directly embedded alongside your engineering and product leadership to accelerate execution.",
+      },
+      {
+        question: "How do you ensure technical and commercial confidentiality?",
+        answer:
+          "We execute a mutual Non-Disclosure Agreement (NDA) before any technical review or codebase access. Your architecture and operational metrics remain strictly confidential.",
+      },
+      {
+        question: "Do you work with international clients in English?",
+        answer:
+          "Yes. Our entire team is bilingual. All technical specifications, architecture blueprints, code documentation, and sprints are conducted in English or Spanish depending on the client.",
       },
     ],
+
     weAreTitle: "We are",
     weAreDescription:
       "RiftWorks is a technology consultancy based in Managua, founded by Gabriel Obando and Axel García.",
     weAreKicker: "We are",
-    weAreHead: "A technology consultancy based in Managua.",
+    weAreHead: "A technology consultancy headquartered in Managua.",
     weAreLead:
-      "RiftWorks understands the problem, structures the solution, and has the technical capacity to build it. We work in Spanish with regional clients and in English with international clients.",
+      "RiftWorks understands the problem, structures the solution, and has the engineering capacity to build it. We work in Spanish with regional partners and in English with international clients.",
     foundersLabel: "Founders",
     audienceLabel: "Audience",
-    audienceHead: "Organizations that need to rebuild complex operations.",
+    audienceHead: "Organizations needing to rebuild complex operations.",
     audienceBody:
-      "The work is for growing teams that can no longer patch fragmented systems. Diagnosis, architecture and construction stay in the same hands.",
+      "Our work is for scaling teams that can no longer patch fragmented systems. Diagnosis, architecture, and construction remain unified.",
     principles: [
       {
-        title: "Technical, not inaccessible",
-        body: "We talk about architecture, data and systems with executive clarity.",
+        title: "Technical, yet accessible",
+        body: "We discuss architecture, data pipelines, and systems with executive clarity.",
       },
       {
-        title: "Strategic, not abstract",
-        body: "Every recommendation connects to an operational problem and a measurable result.",
+        title: "Strategic, yet practical",
+        body: "Every recommendation ties directly to an operational hurdle and a measurable KPI.",
       },
       {
-        title: "Execution, not diagnosis alone",
-        body: "We structure the solution and have the technical capacity to build it.",
+        title: "Execution over diagnosis",
+        body: "We structure the solution and possess the in-house engineering depth to build it.",
       },
     ],
     contactTitle: "Contact",
-    contactDescription: "Start a project with RiftWorks. Write to us for a concrete conversation.",
+    contactDescription: "Start a project with RiftWorks. Reach out for a concrete conversation.",
     contactHead: "Start a project",
-    contactLead: "Describe the operational problem, the current system, and what you need to build.",
+    contactLead: "Describe the operational problem, your current system, and what needs to be built.",
     labels: {
       mail: "Email",
       co: "Company",
@@ -406,7 +590,7 @@ export const copy = {
     emailPlaceholder: "name@company.com",
     selectPlaceholder: "Select…",
     formError: "Complete email and scope before sending.",
-    legal: "RiftWorks · Managua, Nicaragua · Mark pending registration",
+    legal: "RiftWorks · Managua, Nicaragua · Official Aperture Mark",
     notFoundTitle: "This route does not exist.",
     notFoundBody: "Return home or write to start a project.",
     notFoundHome: "Go home",

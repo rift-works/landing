@@ -1,6 +1,6 @@
 # RiftWorks Landing
 
-Landing corporativa de [RiftWorks](https://weareriftworks.com) en Next.js, con el sistema **brand v2 Aperture**.
+Landing corporativa de [RiftWorks](https://weareriftworks.com) en Next.js, con el sistema oficial **Aperture**.
 
 ## Rutas
 

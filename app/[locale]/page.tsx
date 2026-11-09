@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CaseStudies } from "@/components/marketing/CaseStudies";
 import { Coverage } from "@/components/marketing/Coverage";
 import { CtaBand } from "@/components/marketing/CtaBand";
+import { FaqSection } from "@/components/marketing/FaqSection";
 import { FoundersStrip } from "@/components/marketing/FoundersStrip";
 import { Hero } from "@/components/marketing/Hero";
 import { Phases } from "@/components/marketing/Phases";
@@ -33,11 +35,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Hero locale={locale} />
       <SignalStrip locale={locale} />
       <Problem locale={locale} />
+      <CaseStudies locale={locale} />
       <Services locale={locale} />
       <Phases locale={locale} />
       <Rebuild locale={locale} />
       <Coverage locale={locale} />
       <FoundersStrip locale={locale} />
+      <FaqSection locale={locale} />
       <CtaBand locale={locale} />
     </>
   );

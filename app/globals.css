@@ -1,10 +1,10 @@
 @import "tailwindcss";
-@import "../brand/v2/system/tokens/colors.css";
-@import "../brand/v2/system/tokens/typography.css";
-@import "../brand/v2/system/tokens/spacing.css";
-@import "../brand/v2/system/tokens/surface.css";
-@import "../brand/v2/system/tokens/motion.css";
-@import "../brand/v2/system/tokens/base.css";
+@import "../brand/system/tokens/colors.css";
+@import "../brand/system/tokens/typography.css";
+@import "../brand/system/tokens/spacing.css";
+@import "../brand/system/tokens/surface.css";
+@import "../brand/system/tokens/motion.css";
+@import "../brand/system/tokens/base.css";
 
 :root {
   --rw-font-sans: var(--font-archivo), "Archivo", system-ui, sans-serif;

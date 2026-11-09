@@ -1,7 +1,7 @@
 <!-- RW-D-14 -->
 # Guidelines — referencia de normas (ES)
 
-**RiftWorks v2 · RW-D-14** · Aprobado 17 · 08 · 2026 — Gabriel Obando, Axel García
+**RiftWorks · RW-D-14 (Oficial)** · Aprobado 17 · 08 · 2026 — Gabriel Obando, Axel García
 
 Esta es la referencia corta: las reglas sin los especímenes. La versión completa
 de 24 páginas, con ejemplos y comparaciones, está en

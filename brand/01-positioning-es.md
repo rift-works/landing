@@ -1,7 +1,7 @@
 <!-- RW-D-01 -->
 # Posicionamiento
 
-**RiftWorks v2 · RW-D-01** · Aprobado 17 · 08 · 2026 — Gabriel Obando, Axel García
+**RiftWorks · RW-D-01 (Oficial)** · Aprobado 17 · 08 · 2026 — Gabriel Obando, Axel García
 
 Quién es RiftWorks, a quién le vende y con qué argumento.
 
