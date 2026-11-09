@@ -25,13 +25,30 @@ export default async function LocaleLayout({
   const copy = getCopy(locale);
 
   return (
-    <div style={{ background: "var(--rw-surface)", minHeight: "100vh" }} lang={locale}>
+    <div
+      style={{
+        background: "var(--rw-surface)",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+      lang={locale}
+    >
       <JsonLd data={[organizationJsonLd(locale), websiteJsonLd()]} />
       <a href="#main" className="rw-skip">
         {copy.skip}
       </a>
       <Header locale={locale} />
-      <main id="main">{children}</main>
+      <main
+        id="main"
+        style={{
+          flex: "1 0 auto",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {children}
+      </main>
       <Footer locale={locale} />
     </div>
   );
