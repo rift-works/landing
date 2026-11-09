@@ -71,7 +71,7 @@ export function organizationJsonLd(locale: Locale) {
       { "@type": "Person", name: "Gabriel Obando" },
       { "@type": "Person", name: "Axel García" },
     ],
-    sameAs: [site.url],
+    sameAs: [site.url, site.social.instagram, site.social.facebook],
   };
 }
 

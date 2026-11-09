@@ -3,8 +3,16 @@ import type { Locale } from "@/lib/i18n";
 export const site = {
   name: "RiftWorks",
   url: "https://weareriftworks.com",
-  email: "hola@weareriftworks.com",
+  email: "contact@weareriftworks.com",
   city: "Managua, Nicaragua",
+  social: {
+    instagram: "https://www.instagram.com/weareriftworks/",
+    facebook: "https://www.facebook.com/profile.php?id=61596121272155",
+  },
+  socialDisplay: [
+    { label: "Instagram", handle: "@weareriftworks", href: "https://www.instagram.com/weareriftworks/" },
+    { label: "Facebook", handle: "RiftWorks", href: "https://www.facebook.com/profile.php?id=61596121272155" },
+  ],
 } as const;
 
 export const phases = ["Discover", "Architect", "Build", "Optimize"] as const;

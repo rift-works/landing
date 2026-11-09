@@ -165,6 +165,40 @@ export function Footer({ locale }: { locale: Locale }) {
               ? "Operación bilingüe · Respuesta en 48 horas hábiles."
               : "Bilingual operations · 48-hour response turnaround."}
           </p>
+          <div style={{ marginTop: 6, display: "flex", flexDirection: "column", gap: 8 }}>
+            <span
+              style={{
+                font: "var(--rw-weight-medium) 9px/1 var(--rw-font-mono)",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "rgba(237,233,227,0.45)",
+              }}
+            >
+              {locale === "es" ? "Redes Oficiales" : "Social"}
+            </span>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+              {site.socialDisplay.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    font: "var(--rw-weight-regular) 11px/1.4 var(--rw-font-mono)",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "rgba(237,233,227,0.85)",
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 4,
+                  }}
+                >
+                  {item.label} ↗
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
