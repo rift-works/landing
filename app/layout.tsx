@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import type { ReactNode } from "react";
 import { isLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
+import { AwsRum } from "@/components/analytics/AwsRum";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -49,7 +50,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       className={`${archivo.variable} ${ibmPlexMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <AwsRum />
+        {children}
+      </body>
     </html>
   );
 }
